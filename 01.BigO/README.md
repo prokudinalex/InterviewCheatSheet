@@ -5,8 +5,10 @@ It can be used to distinguish bad code from good code.
 ## What is good code?
 * Readable
 * Scalable
+
 Big O notation measures how the code can scale. How long an algorithm takes to run.
-Because execution of the function could take different amount of time on different machines, Big O notation measures not exact ~~wall clock~~ time of the algorithm. 
+
+Because execution of the function could take different amount of time on different machines, Big O notation measures not exact **wall clock** time of the algorithm. 
 It measures **amount of operations** which the algorithm performs.
 
 # Complexity
@@ -19,6 +21,7 @@ Here are examples of Big O measures:
 * O(n^2)
 * O(2^n)
 * O(n!)
+
 Where `n` is the input size of function/algorithm.
 
 ## O(1)
