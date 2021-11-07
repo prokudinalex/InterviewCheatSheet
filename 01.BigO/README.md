@@ -33,3 +33,14 @@ Logarithmic time. Usually searching algorithms take such time, if input is sorte
 ## O(n)
 Linear time. It's just `for` or `while` loops through `n` elements
 
+## O(n * log n)
+Log linear - usually sorting operations
+
+## O(n^2)
+Quadratic algorithms. Every element in a collection needs to be compared to any other element of the array. Two nested loops.
+
+## O(2^n)
+Exponential algorithms. Recursive functions which solves the problem of size `n`.
+
+## O(n!)
+Factorial time - separate loop for every element in the collection.
