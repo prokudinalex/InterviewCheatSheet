@@ -4,4 +4,5 @@ It might be helpful for those, who just starting their journey in finding a new 
 Good luck!
 
 # Table of contents
+## 01. Big O
 ## To be continued...
