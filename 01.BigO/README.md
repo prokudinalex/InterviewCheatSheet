@@ -14,19 +14,22 @@ It measures **amount of operations** which the algorithm performs.
 # Complexity
 Big O simply means how much does function or algorithm slow down if we grow it's input size. 
 Here are examples of Big O measures:
-* O(1)
-* O(log n)
-* O(n)
-* O(n * log n)
-* O(n^2)
-* O(2^n)
-* O(n!)
+* `O(1)`
+* `O(log n)`
+* `O(n)`
+* `O(n * log n)`
+* `O(n^2)`
+* `O(2^n)`
+* `O(n!)`
 
 Where `n` is the input size of function/algorithm.
 
 ## O(1)
 Algorithm takes constant time. Amount of operations are the same despite the input size. There are no loops.
-
+```java
+    int[] array = {1, 2, 3, 4, 5};
+    System.out.println(array[0]);
+```
 ## O(log n)
 Logarithmic time. Usually searching algorithms take such time, if input is sorted.
 
