@@ -50,7 +50,14 @@ Log linear - usually sorting operations
 
 ## O(n^2)
 Quadratic algorithms. Every element in a collection needs to be compared to any other element of the array. Two nested loops.
-
+```java
+    int[] array = {1, 2, 3, 4, 5};
+    for (int i : array) {
+        for (int j : array) {
+            System.out.println(String.format("[%d, %d]", i, j));
+        }
+    }
+```
 ## O(2^n)
 Exponential algorithms. Recursive functions which solves the problem of size `n`.
 
