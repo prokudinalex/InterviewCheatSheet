@@ -26,16 +26,25 @@ Where `n` is the input size of function/algorithm.
 
 ## O(1)
 Algorithm takes constant time. Amount of operations are the same despite the input size. There are no loops.
+It could be pushing to an array, getting an element by index, adding child element, etc.
 ```java
     int[] array = {1, 2, 3, 4, 5};
     System.out.println(array[0]);
 ```
 ## O(log n)
 Logarithmic time. Usually searching algorithms take such time, if input is sorted.
+```java
+    // TODO: add search example
+```
 
 ## O(n)
 Linear time. It's just `for` or `while` loops through `n` elements
-
+```java
+    int[] array = {1, 2, 3, 4, 5};
+    for (int item : array) {
+        System.out.println(item);
+    }
+```
 ## O(n * log n)
 Log linear - usually sorting operations
 
@@ -47,3 +56,9 @@ Exponential algorithms. Recursive functions which solves the problem of size `n`
 
 ## O(n!)
 Factorial time - separate loop for every element in the collection.
+
+# Rules to calculate time complexity
+1. Always worst case
+2. Remove constants
+3. Different inputs should have different variables. `O(n + m)` for consecutive loops, `O(n * m)` for nested loops.
+4. Drop non-dominant terms
