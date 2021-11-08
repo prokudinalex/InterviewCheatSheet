@@ -5,5 +5,5 @@ It might be helpful for those, who just starting their journey in finding a new 
 Good luck!
 
 # Table of contents
-1. [Big O](01.BigO/)
+1. [Big O](BigO/)
 1. To be continued...
