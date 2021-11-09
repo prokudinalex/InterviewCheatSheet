@@ -69,3 +69,15 @@ Factorial time - separate loop for every element in the collection.
 2. Remove constants
 3. Different inputs should have different variables. `O(n + m)` for consecutive loops, `O(n * m)` for nested loops.
 4. Drop non-dominant terms
+
+# What can cause time complexity?
+* Operations (`+`, `-`, `*`, `/`, etc)
+* Comparisons (`>`, `<`, `==`, etc)
+* Looping (`for`, `while`)
+* Outside functions call (`function()`)
+
+# What can cause space complexity?
+* Variables
+* Data Structures
+* Function calls
+* Allocations
