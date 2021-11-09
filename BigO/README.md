@@ -62,8 +62,25 @@ Quadratic algorithms. Every element in a collection needs to be compared to any 
 Exponential algorithms. Recursive functions which solves the problem of size `n`.
 
 ## O(n!)
-Factorial time - separate loop for every element in the collection.
+Factorial growth. Separate loop for every element in the collection.
+```java
+    public static void main(String[] args) {
+        System.out.println(factorial(13));
+    }
 
+    private static long factorial(long n) {
+        if (n <= 1) {
+            return 1;
+        }
+
+        // please don't do this in your production code
+        long result = n;
+        for (int i = 0; i < n; i++) {
+            result = n * factorial(n - 1);
+        }
+        return result;
+    }
+```
 # Rules to calculate time complexity
 1. Always worst case
 2. Remove constants
