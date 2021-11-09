@@ -81,3 +81,8 @@ Factorial time - separate loop for every element in the collection.
 * Data Structures
 * Function calls
 * Allocations
+
+# Big O cheat sheet
+There is a [Big O cheat sheet page](https://www.bigocheatsheet.com/) where [@ericdrowell](https://github.com/ericdrowell) put together examples of Big O notation.
+
+It contains nice chart of Big O complexity, examples of how much time insertions, deletions, search or access could take, and how complex are sorting algorithms.
