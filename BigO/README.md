@@ -96,7 +96,7 @@ Factorial growth. Separate loop for every element in the collection.
 # What can cause space complexity?
 * Variables
 * Data Structures
-* Function calls
+* Function calls (stack overflow in recursion)
 * Allocations
 
 # Big O cheat sheet
