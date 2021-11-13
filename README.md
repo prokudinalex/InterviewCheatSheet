@@ -6,4 +6,5 @@ Good luck!
 
 # Table of contents
 1. [Big O](BigO/)
-1. To be continued...
+2. [Data Structures](DataStructures/)
+3. To be continued...
