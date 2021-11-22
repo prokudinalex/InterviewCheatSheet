@@ -7,3 +7,7 @@ Each data structure is good and is specialized to it's own thing.
 * How to use it
 
 The main thing is about to understand the data structure, so you can pick the right one to use it for solving your problem.
+
+# Data Structures
+1. [Arrays](Arrays/)
+2. To be continued...
