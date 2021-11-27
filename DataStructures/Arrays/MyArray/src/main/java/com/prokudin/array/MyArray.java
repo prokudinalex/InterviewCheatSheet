@@ -10,6 +10,7 @@ import java.util.Spliterator;
 import java.util.function.UnaryOperator;
 
 public class MyArray<Type> implements List<Type> {
+
     private int size;
     private Object[] items = {};
 
@@ -159,7 +160,8 @@ public class MyArray<Type> implements List<Type> {
     }
 
     /**
-     *
+     * Copy data from source array to destination
+     * Time Complexity: O(n)
      * @param src source array to copy from
      * @param srcStart inclusive index of source array to start from
      * @param srcEnd inclusive index of source array to finish at
@@ -169,8 +171,13 @@ public class MyArray<Type> implements List<Type> {
      */
     private static <Type> void copyArray(Type[] src, int srcStart, int srcEnd,
                                          Type[] dst, int dstStart) {
-        if (srcStart >= srcEnd || srcStart >= src.length || srcStart < 0
-                || dstStart >= dst.length || dstStart < 0) {
+        // validate source input
+        if (srcStart >= srcEnd || srcStart >= src.length || srcStart < 0) {
+            return;
+        }
+
+        // validate destination input
+        if (dstStart >= dst.length || dstStart < 0) {
             return;
         }
 
