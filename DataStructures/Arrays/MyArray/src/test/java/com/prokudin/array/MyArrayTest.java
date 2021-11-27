@@ -14,4 +14,9 @@ public class MyArrayTest {
         array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
         assertEquals("check empty array", "MyArray{ size = 4, items = [1, 2, 3, 4] }", array.toString());
     }
+
+    @Test(expected = NullPointerException.class)
+    public void checkOnNullCreation() {
+        new MyArray<>(null); // should throw NPE
+    }
 }
