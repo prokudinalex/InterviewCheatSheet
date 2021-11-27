@@ -39,8 +39,23 @@ public class MyArray<Type> implements List<Type> {
         return this.size == 0;
     }
 
+    /**
+     * That's a search method, so we need to go through the whole array
+     * In the worst case the element will be in the same end, so it will take O(n)
+     * https://github.com/prokudinalex/InterviewCheatSheet/tree/master/DataStructures/Arrays#time-complexity-of-basic-operations
+     * @param value element to search
+     * @return true if the element exists in the array
+     */
     @Override
-    public boolean contains(Object o) {
+    public boolean contains(Object value) {
+        for (Object item : items) { // here comes O(n)
+            if (value == null && item == null) {
+                return true;
+            }
+            if (value != null && value.equals(item)) {
+                return true;
+            }
+        }
         return false;
     }
 

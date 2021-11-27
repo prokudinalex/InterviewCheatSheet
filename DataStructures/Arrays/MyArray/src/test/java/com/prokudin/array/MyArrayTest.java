@@ -3,6 +3,8 @@ package com.prokudin.array;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MyArrayTest {
 
@@ -36,9 +38,22 @@ public class MyArrayTest {
     @Test
     public void checkEmpty() {
         MyArray<Integer> array = new MyArray<>();
-        assertEquals("empty", true, array.isEmpty());
+        assertTrue("empty", array.isEmpty());
 
         array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
-        assertEquals("not empty", false, array.isEmpty());
+        assertFalse("not empty", array.isEmpty());
+    }
+
+    @Test
+    public void checkContains() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        assertTrue("1 contains 3", array.contains(3));
+        assertFalse("1 contains 10", array.contains(10));
+        assertFalse("1 contains null", array.contains(null));
+
+        array = new MyArray<>(new Integer[]{ 1, null, 3, 0 });
+        assertTrue("2 contains null", array.contains(null));
+        assertTrue("2 contains 0", array.contains(0));
+        assertFalse("2 contains 10", array.contains(10));
     }
 }
