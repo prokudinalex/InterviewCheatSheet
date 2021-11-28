@@ -80,4 +80,25 @@ public class MyArrayTest {
         Integer[] bigger = new Integer[]{ 1, 2, 3, 4, null };
         assertArrayEquals("pre-filled bigger array 3", bigger, array2.toArray(new Integer[5]));
     }
+
+    @Test
+    public void checkSimpleAdd() {
+        MyArray<Integer> array = new MyArray<>();
+        assertEquals("empty array size", 0, array.size());
+
+        array.add(1);
+        assertEquals("empty array add 1 size", 1, array.size());
+        assertEquals("check 1 items", "MyArray{ size = 1, items = [1] }", array.toString());
+
+        array.add(1);
+        assertEquals("empty array add second 1 size", 2, array.size());
+        assertEquals("check 2 items", "MyArray{ size = 2, items = [1, 1] }", array.toString());
+
+        array.add(100);
+        assertEquals("empty array add 100 size", 3, array.size());
+        assertEquals("check 2 items", "MyArray{ size = 3, items = [1, 1, 100] }", array.toString());
+
+        Integer[] expected = new Integer[]{ 1, 1, 100 };
+        assertArrayEquals("some original array", expected, array.toArray());
+    }
 }

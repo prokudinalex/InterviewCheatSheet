@@ -82,9 +82,20 @@ public class MyArray<Type> implements List<Type> {
         return a;
     }
 
+    /**
+     * Adds an element to the same end of array.
+     * Need to re-allocate array of extended size, and copy elements, so it will take O(n)
+     * @param value element to add
+     * @return true
+     */
     @Override
-    public boolean add(Type type) {
-        return false;
+    public boolean add(Type value) {
+        Object[] result = new Object[items.length + 1];
+        copyArray(items, 0, items.length - 1, result, 0);
+        result[result.length - 1] = value;
+        this.size = result.length;
+        this.items = result;
+        return true;
     }
 
     @Override
@@ -195,7 +206,7 @@ public class MyArray<Type> implements List<Type> {
     private static <Type> void copyArray(Type[] src, int srcStart, int srcEnd,
                                          Type[] dst, int dstStart) {
         // validate source input
-        if (srcStart >= srcEnd || srcStart >= src.length || srcStart < 0) {
+        if (srcStart > srcEnd || srcStart >= src.length || srcStart < 0) {
             return;
         }
 
