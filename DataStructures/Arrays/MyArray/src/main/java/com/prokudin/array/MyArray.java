@@ -61,17 +61,25 @@ public class MyArray<Type> implements List<Type> {
 
     @Override
     public Iterator<Type> iterator() {
+        // TODO: implement
         return null;
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] result = new Object[items.length];
+        copyArray(items, 0, items.length - 1, result, 0);
+        return result;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+        if (a.length < items.length) {
+            return (T[]) toArray();
+        }
+        copyArray(items, 0, items.length - 1, a, 0);
+        return a;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.prokudin.array;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -55,5 +56,28 @@ public class MyArrayTest {
         assertTrue("2 contains null", array.contains(null));
         assertTrue("2 contains 0", array.contains(0));
         assertFalse("2 contains 10", array.contains(10));
+    }
+
+    @Test
+    public void checkToArray() {
+        Integer[] original = new Integer[]{ 1, 2, 3, 4 };
+        MyArray<Integer> array = new MyArray<>(original);
+        assertArrayEquals("some original array", original, array.toArray());
+
+        Integer[] empty = new Integer[]{};
+        array = new MyArray<>(empty);
+        assertArrayEquals("some empty array 1", empty, array.toArray());
+
+        array = new MyArray<>();
+        assertArrayEquals("some empty array 2", empty, array.toArray());
+
+        Integer[] original2 = new Integer[]{ 1, 2, 3, 4 };
+        MyArray<Integer> array2 = new MyArray<>(original);
+
+        assertArrayEquals("pre-filled original array 1", original2, array2.toArray(new Integer[]{}));
+        assertArrayEquals("pre-filled original array 2", original2, array2.toArray(new Integer[3]));
+
+        Integer[] bigger = new Integer[]{ 1, 2, 3, 4, null };
+        assertArrayEquals("pre-filled bigger array 3", bigger, array2.toArray(new Integer[5]));
     }
 }
