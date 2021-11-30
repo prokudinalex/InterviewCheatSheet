@@ -98,9 +98,35 @@ public class MyArray<Type> implements List<Type> {
         return true;
     }
 
+    /**
+     * Removes first occurrence of value from the array.
+     * Time complexity: O(n)
+     * @param value element to be removed, if exists
+     * @return true if array was modified
+     */
     @Override
-    public boolean remove(Object o) {
-        return false;
+    public boolean remove(Object value) {
+        if (size <= 0) {
+            return false;
+        }
+
+        Object[] result = new Object[items.length - 1];
+
+        boolean found = false;
+        for (int i = 0; i < items.length; i++) {
+            if (!found && items[i] == value) {
+                found = true;
+                continue; // just shift the index once
+            }
+
+            result[found ? i - 1 : i] = items[i];
+        }
+
+        if (found) {
+            this.items = result;
+            this.size = result.length;
+        }
+        return found;
     }
 
     @Override
