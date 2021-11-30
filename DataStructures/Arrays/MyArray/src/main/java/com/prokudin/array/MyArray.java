@@ -39,6 +39,12 @@ public class MyArray<Type> implements List<Type> {
         return this.size == 0;
     }
 
+    /**
+     * Just returns the element by index
+     * Time complexity: O(1)
+     * @param index index of required element
+     * @return element at specified index
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Type get(int index) {
