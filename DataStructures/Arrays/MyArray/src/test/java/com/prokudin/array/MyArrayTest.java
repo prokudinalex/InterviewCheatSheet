@@ -162,4 +162,23 @@ public class MyArrayTest {
         assertEquals("array size", 0, array.size());
         assertEquals("check items after remove 8", "MyArray{ size = 0, items = [] }", array.toString());
     }
+
+    @Test
+    public void checkSimpleAccess() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        assertEquals("element on 0", (Integer) 1, array.get(0));
+        assertEquals("element on 2", (Integer) 3, array.get(2));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void checkOutOfBoundsAccessLeftBorder() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        array.get(-5);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void checkOutOfBoundsAccessRightBorder() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        array.get(10);
+    }
 }

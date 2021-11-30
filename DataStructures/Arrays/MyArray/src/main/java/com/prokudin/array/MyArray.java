@@ -39,6 +39,15 @@ public class MyArray<Type> implements List<Type> {
         return this.size == 0;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Type get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return (Type) items[index];
+    }
+
     /**
      * That's a search method, so we need to go through the whole array
      * In the worst case the element will be in the same end, so it will take O(n)
@@ -57,29 +66,6 @@ public class MyArray<Type> implements List<Type> {
             }
         }
         return false;
-    }
-
-    @Override
-    public Iterator<Type> iterator() {
-        // TODO: implement
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-        Object[] result = new Object[items.length];
-        copyArray(items, 0, items.length - 1, result, 0);
-        return result;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T[] toArray(T[] a) {
-        if (a.length < items.length) {
-            return (T[]) toArray();
-        }
-        copyArray(items, 0, items.length - 1, a, 0);
-        return a;
     }
 
     /**
@@ -130,6 +116,29 @@ public class MyArray<Type> implements List<Type> {
     }
 
     @Override
+    public Iterator<Type> iterator() {
+        // TODO: implement
+        return null;
+    }
+
+    @Override
+    public Object[] toArray() {
+        Object[] result = new Object[items.length];
+        copyArray(items, 0, items.length - 1, result, 0);
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T[] toArray(T[] a) {
+        if (a.length < items.length) {
+            return (T[]) toArray();
+        }
+        copyArray(items, 0, items.length - 1, a, 0);
+        return a;
+    }
+
+    @Override
     public boolean containsAll(Collection<?> c) {
         return false;
     }
@@ -167,11 +176,6 @@ public class MyArray<Type> implements List<Type> {
     @Override
     public void clear() {
 
-    }
-
-    @Override
-    public Type get(int index) {
-        return null;
     }
 
     @Override
