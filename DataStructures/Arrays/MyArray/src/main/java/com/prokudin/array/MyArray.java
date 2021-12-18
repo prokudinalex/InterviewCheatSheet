@@ -3,6 +3,8 @@ package com.prokudin.array;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.UnaryOperator;
 
 public class MyArray<Type> implements IArray<Type> {
@@ -12,6 +14,7 @@ public class MyArray<Type> implements IArray<Type> {
 
     public MyArray() {
     }
+
 
     public MyArray(Type[] value) {
         items = new Object[value.length];
@@ -126,9 +129,9 @@ public class MyArray<Type> implements IArray<Type> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> T[] toArray(T[] a) {
+    public Type[] toArray(Type[] a) {
         if (a.length < items.length) {
-            return (T[]) toArray();
+            return (Type[]) toArray();
         }
         copyArray(items, 0, items.length - 1, a, 0);
         return a;
@@ -136,7 +139,12 @@ public class MyArray<Type> implements IArray<Type> {
 
     @Override
     public boolean containsAll(Collection<Type> c) {
-        return false;
+        Set<Type> expected = new HashSet<>(c); // O(n)
+
+        for (Object item : items) { // O(m)
+            expected.remove(item);
+        }
+        return expected.size() == 0; // 0(1), So in overall O(n + m)
     }
 
     @Override
