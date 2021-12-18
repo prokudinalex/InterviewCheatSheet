@@ -1,4 +1,6 @@
-package com.prokudin.array;
+package com.prokudin;
+
+import com.prokudin.array.MyArray;
 
 public class Main {
 
