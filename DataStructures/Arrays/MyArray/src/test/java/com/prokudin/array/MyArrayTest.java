@@ -101,4 +101,84 @@ public class MyArrayTest {
         Integer[] expected = new Integer[]{ 1, 1, 100 };
         assertArrayEquals("some original array", expected, array.toArray());
     }
+
+    @Test
+    public void checkSimpleRemove() {
+        MyArray<Integer> array = new MyArray<>();
+        assertEquals("empty array size", 0, array.size());
+        array.remove((Integer) 1);
+        assertEquals("empty array size", 0, array.size());
+
+        array.add(1);
+        assertEquals("empty array add 1 size", 1, array.size());
+        assertEquals("check 1 items", "MyArray{ size = 1, items = [1] }", array.toString());
+        array.remove((Integer) 1);
+        assertEquals("empty array size after remove", 0, array.size());
+        assertEquals("check items after remove", "MyArray{ size = 0, items = [] }", array.toString());
+    }
+
+    @Test
+    public void checkComplexRemove() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 3, null, 4 });
+        assertEquals("array size", 6, array.size());
+        assertEquals("check items before remove", "MyArray{ size = 6, items = [1, 2, 3, 3, null, 4] }", array.toString());
+
+        boolean result = array.remove(null);
+        assertTrue(result);
+        assertEquals("array size", 5, array.size());
+        assertEquals("check items after remove 1", "MyArray{ size = 5, items = [1, 2, 3, 3, 4] }", array.toString());
+
+        result = array.remove((Integer) 3);
+        assertTrue(result);
+        assertEquals("array size", 4, array.size());
+        assertEquals("check items after remove 2", "MyArray{ size = 4, items = [1, 2, 3, 4] }", array.toString());
+
+        array.add(3);
+        assertEquals("array size", 5, array.size());
+        assertEquals("check items after remove 3", "MyArray{ size = 5, items = [1, 2, 3, 4, 3] }", array.toString());
+
+        result = array.remove((Integer) 3);
+        assertTrue(result);
+        assertEquals("array size", 4, array.size());
+        assertEquals("check items after remove 4", "MyArray{ size = 4, items = [1, 2, 4, 3] }", array.toString());
+
+        result = array.remove((Integer) 3);
+        assertTrue(result);
+        assertEquals("array size", 3, array.size());
+        assertEquals("check items after remove 5", "MyArray{ size = 3, items = [1, 2, 4] }", array.toString());
+
+        result = array.remove((Integer) 1);
+        assertTrue(result);
+        assertEquals("array size", 2, array.size());
+        assertEquals("check items after remove 6", "MyArray{ size = 2, items = [2, 4] }", array.toString());
+
+        result = array.remove((Integer) 4);
+        assertTrue(result);
+        assertEquals("array size", 1, array.size());
+        assertEquals("check items after remove 7", "MyArray{ size = 1, items = [2] }", array.toString());
+
+        result = array.remove((Integer) 2);
+        assertTrue(result);
+        assertEquals("array size", 0, array.size());
+        assertEquals("check items after remove 8", "MyArray{ size = 0, items = [] }", array.toString());
+    }
+
+    @Test
+    public void checkSimpleAccess() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        assertEquals("element on 0", (Integer) 1, array.get(0));
+        assertEquals("element on 2", (Integer) 3, array.get(2));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void checkOutOfBoundsAccessLeftBorder() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        array.get(-5);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void checkOutOfBoundsAccessRightBorder() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3, 4 });
+        array.get(10);
+    }
 }
