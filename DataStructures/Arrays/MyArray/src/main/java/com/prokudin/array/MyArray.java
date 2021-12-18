@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.function.UnaryOperator;
 
-public class MyArray<Type> {
+public class MyArray<Type> implements IArray<Type> {
 
     private int size;
     private Object[] items = {};
@@ -25,10 +25,12 @@ public class MyArray<Type> {
                 Arrays.toString(items));
     }
 
+    @Override
     public int size() {
         return this.size;
     }
 
+    @Override
     public boolean isEmpty() {
         return this.size == 0;
     }
@@ -40,6 +42,7 @@ public class MyArray<Type> {
      * @return element at specified index
      */
     @SuppressWarnings("unchecked")
+    @Override
     public Type get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -54,7 +57,8 @@ public class MyArray<Type> {
      * @param value element to search
      * @return true if the element exists in the array
      */
-    public boolean contains(Object value) {
+    @Override
+    public boolean contains(Type value) {
         for (Object item : items) { // here comes O(n)
             if (value == null && item == null) {
                 return true;
@@ -72,6 +76,7 @@ public class MyArray<Type> {
      * @param value element to add
      * @return true
      */
+    @Override
     public boolean add(Type value) {
         Object[] result = new Object[items.length + 1];
         copyArray(items, 0, items.length - 1, result, 0);
@@ -87,6 +92,7 @@ public class MyArray<Type> {
      * @param value element to be removed, if exists
      * @return true if array was modified
      */
+    @Override
     public boolean remove(Object value) {
         if (size <= 0) {
             return false;
@@ -111,6 +117,7 @@ public class MyArray<Type> {
         return found;
     }
 
+    @Override
     public Object[] toArray() {
         Object[] result = new Object[items.length];
         copyArray(items, 0, items.length - 1, result, 0);
@@ -118,6 +125,7 @@ public class MyArray<Type> {
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public <T> T[] toArray(T[] a) {
         if (a.length < items.length) {
             return (T[]) toArray();
@@ -126,54 +134,67 @@ public class MyArray<Type> {
         return a;
     }
 
+    @Override
     public boolean containsAll(Collection<?> c) {
         return false;
     }
 
+    @Override
     public boolean addAll(Collection<? extends Type> c) {
         return false;
     }
 
+    @Override
     public boolean addAll(int index, Collection<? extends Type> c) {
         return false;
     }
 
+    @Override
     public boolean removeAll(Collection<?> c) {
         return false;
     }
 
+    @Override
     public boolean retainAll(Collection<?> c) {
         return false;
     }
 
+    @Override
     public void replaceAll(UnaryOperator<Type> operator) {
 
     }
 
+    @Override
     public void sort(Comparator<? super Type> c) {
 
     }
 
+    @Override
     public void clear() {
 
     }
 
+    @Override
     public Type set(int index, Type element) {
         return null;
     }
 
+    @Override
     public void add(int index, Type element) {
 
     }
 
+    @Override
     public Type remove(int index) {
         return null;
     }
 
+    @Override
     public int indexOf(Object o) {
         return 0;
     }
 
+    @Override
     public int lastIndexOf(Object o) {
         return 0;
     }
