@@ -3,13 +3,9 @@ package com.prokudin.array;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Spliterator;
 import java.util.function.UnaryOperator;
 
-public class MyArray<Type> implements List<Type> {
+public class MyArray<Type> {
 
     private int size;
     private Object[] items = {};
@@ -29,12 +25,10 @@ public class MyArray<Type> implements List<Type> {
                 Arrays.toString(items));
     }
 
-    @Override
     public int size() {
         return this.size;
     }
 
-    @Override
     public boolean isEmpty() {
         return this.size == 0;
     }
@@ -46,7 +40,6 @@ public class MyArray<Type> implements List<Type> {
      * @return element at specified index
      */
     @SuppressWarnings("unchecked")
-    @Override
     public Type get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -61,7 +54,6 @@ public class MyArray<Type> implements List<Type> {
      * @param value element to search
      * @return true if the element exists in the array
      */
-    @Override
     public boolean contains(Object value) {
         for (Object item : items) { // here comes O(n)
             if (value == null && item == null) {
@@ -80,7 +72,6 @@ public class MyArray<Type> implements List<Type> {
      * @param value element to add
      * @return true
      */
-    @Override
     public boolean add(Type value) {
         Object[] result = new Object[items.length + 1];
         copyArray(items, 0, items.length - 1, result, 0);
@@ -96,7 +87,6 @@ public class MyArray<Type> implements List<Type> {
      * @param value element to be removed, if exists
      * @return true if array was modified
      */
-    @Override
     public boolean remove(Object value) {
         if (size <= 0) {
             return false;
@@ -121,13 +111,6 @@ public class MyArray<Type> implements List<Type> {
         return found;
     }
 
-    @Override
-    public Iterator<Type> iterator() {
-        // TODO: implement
-        return null;
-    }
-
-    @Override
     public Object[] toArray() {
         Object[] result = new Object[items.length];
         copyArray(items, 0, items.length - 1, result, 0);
@@ -135,7 +118,6 @@ public class MyArray<Type> implements List<Type> {
     }
 
     @SuppressWarnings("unchecked")
-    @Override
     public <T> T[] toArray(T[] a) {
         if (a.length < items.length) {
             return (T[]) toArray();
@@ -144,89 +126,56 @@ public class MyArray<Type> implements List<Type> {
         return a;
     }
 
-    @Override
     public boolean containsAll(Collection<?> c) {
         return false;
     }
 
-    @Override
     public boolean addAll(Collection<? extends Type> c) {
         return false;
     }
 
-    @Override
     public boolean addAll(int index, Collection<? extends Type> c) {
         return false;
     }
 
-    @Override
     public boolean removeAll(Collection<?> c) {
         return false;
     }
 
-    @Override
     public boolean retainAll(Collection<?> c) {
         return false;
     }
 
-    @Override
     public void replaceAll(UnaryOperator<Type> operator) {
 
     }
 
-    @Override
     public void sort(Comparator<? super Type> c) {
 
     }
 
-    @Override
     public void clear() {
 
     }
 
-    @Override
     public Type set(int index, Type element) {
         return null;
     }
 
-    @Override
     public void add(int index, Type element) {
 
     }
 
-    @Override
     public Type remove(int index) {
         return null;
     }
 
-    @Override
     public int indexOf(Object o) {
         return 0;
     }
 
-    @Override
     public int lastIndexOf(Object o) {
         return 0;
-    }
-
-    @Override
-    public ListIterator<Type> listIterator() {
-        return null;
-    }
-
-    @Override
-    public ListIterator<Type> listIterator(int index) {
-        return null;
-    }
-
-    @Override
-    public List<Type> subList(int fromIndex, int toIndex) {
-        return null;
-    }
-
-    @Override
-    public Spliterator<Type> spliterator() {
-        return null;
     }
 
     /**
