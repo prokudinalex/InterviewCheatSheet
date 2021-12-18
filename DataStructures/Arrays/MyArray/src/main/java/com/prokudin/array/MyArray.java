@@ -142,7 +142,7 @@ public class MyArray<Type> implements IArray<Type> {
         Set<Type> expected = new HashSet<>(c); // O(n)
 
         for (Object item : items) { // O(m)
-            expected.remove(item);
+            expected.remove(item); // Java HashSet remove takes O(1) time
         }
         return expected.size() == 0; // 0(1), So in overall O(n + m)
     }
