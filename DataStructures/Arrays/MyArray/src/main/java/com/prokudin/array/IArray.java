@@ -17,7 +17,7 @@ public interface IArray<Type> {
     <T> T[] toArray(T[] a);
 
 
-    boolean containsAll(Collection<?> c);
+    boolean containsAll(Collection<Type> c);
     boolean addAll(Collection<? extends Type> c);
     boolean addAll(int index, Collection<? extends Type> c);
     boolean removeAll(Collection<?> c);

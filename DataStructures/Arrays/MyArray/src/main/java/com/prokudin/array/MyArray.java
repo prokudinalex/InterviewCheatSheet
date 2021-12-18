@@ -135,7 +135,7 @@ public class MyArray<Type> implements IArray<Type> {
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
+    public boolean containsAll(Collection<Type> c) {
         return false;
     }
 
