@@ -149,7 +149,16 @@ public class MyArray<Type> implements IArray<Type> {
 
     @Override
     public boolean addAll(Collection<? extends Type> c) {
-        return false;
+        // copy origin
+        Object[] result = new Object[items.length + c.size()];
+        copyArray(items, 0, items.length - 1, result, 0);
+
+        // copy tail
+        Object[] src = c.toArray();
+        copyArray(src, 0, src.length - 1, result, items.length);
+        this.size = result.length;
+        this.items = result;
+        return true;
     }
 
     @Override

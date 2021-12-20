@@ -200,4 +200,17 @@ public class MyArrayTest {
         assertFalse(array.containsAll(Arrays.asList(1, 2, 3, 4, 5)));
         assertFalse(array.containsAll(Collections.singletonList(5)));
     }
+
+    @Test
+    public void checkAddAll() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+
+        array.addAll(Arrays.asList(4, 5));
+        assertEquals("size after add all", 5, array.size());
+        assertEquals("check array", "MyArray{ size = 5, items = [1, 2, 3, 4, 5] }", array.toString());
+
+        array.addAll(Arrays.asList(100, 200, 300));
+        Integer[] expected = new Integer[]{ 1, 2, 3, 4, 5, 100, 200, 300 };
+        assertArrayEquals("some original array", expected, array.toArray());
+    }
 }
