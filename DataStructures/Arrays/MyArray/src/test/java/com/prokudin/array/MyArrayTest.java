@@ -213,4 +213,14 @@ public class MyArrayTest {
         Integer[] expected = new Integer[]{ 1, 2, 3, 4, 5, 100, 200, 300 };
         assertArrayEquals("some original array", expected, array.toArray());
     }
+
+    @Test
+    public void checkClear() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+        assertEquals("check origin array", "MyArray{ size = 3, items = [1, 2, 3] }", array.toString());
+
+        array.clear();
+        assertEquals("check cleared array", "MyArray{ size = 0, items = [] }", array.toString());
+        assertEquals("check cleared size", 0, array.size());
+    }
 }

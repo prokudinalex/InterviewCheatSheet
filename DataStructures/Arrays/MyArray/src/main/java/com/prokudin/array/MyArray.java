@@ -2,10 +2,8 @@ package com.prokudin.array;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.UnaryOperator;
 
 public class MyArray<Type> implements IArray<Type> {
 
@@ -172,23 +170,9 @@ public class MyArray<Type> implements IArray<Type> {
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public void replaceAll(UnaryOperator<Type> operator) {
-
-    }
-
-    @Override
-    public void sort(Comparator<? super Type> c) {
-
-    }
-
-    @Override
     public void clear() {
-
+        items = new Object[0];
+        size = 0;
     }
 
     @Override
