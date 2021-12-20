@@ -215,6 +215,49 @@ public class MyArrayTest {
     }
 
     @Test
+    public void checkAddAllAtIndex() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+
+        // check false cases
+        assertFalse("add all on wrong index 1", array.addAll(-1, Arrays.asList(4, 5)));
+        assertFalse("add all on wrong index 2", array.addAll(4, Arrays.asList(4, 5)));
+        assertFalse("add all on wrong index 3", array.addAll(100, Arrays.asList(4, 5)));
+
+        // check beginning of array
+        assertTrue("add all in beginning 1", array.addAll(0, Collections.singletonList(0)));
+        Integer[] expected = new Integer[]{ 0, 1, 2, 3 };
+        assertArrayEquals(expected, array.toArray());
+
+        assertTrue("add all in beginning 2", array.addAll(0, Arrays.asList(100, 200)));
+        expected = new Integer[]{ 100, 200, 0, 1, 2, 3 };
+        assertArrayEquals(expected, array.toArray());
+
+        // check adding to the middle
+        assertTrue("add all in middle 1", array.addAll(4, Collections.singletonList(-5)));
+        expected = new Integer[]{ 100, 200, 0, 1, -5, 2, 3 };
+        assertArrayEquals(expected, array.toArray());
+
+        assertTrue("add all in middle 2", array.addAll(3, Arrays.asList(-1, -2)));
+        expected = new Integer[]{ 100, 200, 0, -1, -2, 1, -5, 2, 3 };
+        assertArrayEquals(expected, array.toArray());
+
+        // check adding to the end
+        assertTrue("add all in end 1", array.addAll(9, Collections.singletonList(666)));
+        expected = new Integer[]{ 100, 200, 0, -1, -2, 1, -5, 2, 3, 666 };
+        assertArrayEquals(expected, array.toArray());
+
+        assertTrue("add all in end 2", array.addAll(10, Arrays.asList(777, 888)));
+        expected = new Integer[]{ 100, 200, 0, -1, -2, 1, -5, 2, 3, 666, 777, 888 };
+        assertArrayEquals(expected, array.toArray());
+
+        // add after clear
+        array.clear();
+        assertTrue("add all after clear", array.addAll(0, Arrays.asList(777, 888)));
+        expected = new Integer[]{ 777, 888 };
+        assertArrayEquals(expected, array.toArray());
+    }
+
+    @Test
     public void checkClear() {
         MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
         assertEquals("check origin array", "MyArray{ size = 3, items = [1, 2, 3] }", array.toString());
