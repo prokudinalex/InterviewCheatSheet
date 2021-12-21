@@ -233,7 +233,17 @@ public class MyArray<Type> implements IArray<Type> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i < items.length; i++) {
+            if (null == o && null == items[i]) {
+                return i;
+            }
+
+            if (null != items[i] && items[i].equals(o)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     @Override

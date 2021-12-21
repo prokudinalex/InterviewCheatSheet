@@ -325,4 +325,20 @@ public class MyArrayTest {
         array.clear();
         assertNull("set on wrong index 0", array.set(0, 5));
     }
+
+    @Test
+    public void checkIndexOf() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+        assertEquals("check non-existent 5", -1, array.indexOf(5));
+        assertEquals("check non-existent null", -1, array.indexOf(null));
+        assertEquals("check 3", 2, array.indexOf(3));
+        assertEquals("check 2", 1, array.indexOf(2));
+        assertEquals("check 1", 0, array.indexOf(1));
+
+        array = new MyArray<>(new Integer[]{ 1, 3, 2, 5, 6, 7, 1, 2, 3 });
+        assertEquals("check only first occurrence of 2", 2, array.indexOf(2));
+
+        array = new MyArray<>(new Integer[]{ 1, 3, 2, null, 6, 7, 1, null, 3 });
+        assertEquals("check only first occurrence of null", 3, array.indexOf(null));
+    }
 }
