@@ -198,8 +198,24 @@ public class MyArray<Type> implements IArray<Type> {
     }
 
     @Override
-    public void add(int index, Type element) {
+    public boolean add(int index, Type element) {
+        if (index < 0 || index > items.length) {
+            return false;
+        }
 
+        // copy head
+        Object[] result = new Object[items.length + 1];
+        copyArray(items, 0, index - 1, result, 0);
+
+        // copy source
+        result[index] = element;
+
+        // copy tail
+        copyArray(items, index, items.length - 1, result, index + 1);
+
+        this.size = result.length;
+        this.items = result;
+        return true;
     }
 
     @Override

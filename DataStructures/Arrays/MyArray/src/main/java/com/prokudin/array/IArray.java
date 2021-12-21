@@ -20,7 +20,7 @@ public interface IArray<Type> {
     boolean removeAll(Collection<?> c);
     void clear();
     Type set(int index, Type element);
-    void add(int index, Type element);
+    boolean add(int index, Type element);
     Type remove(int index);
     int indexOf(Object o);
     int lastIndexOf(Object o);

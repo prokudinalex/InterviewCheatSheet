@@ -266,4 +266,36 @@ public class MyArrayTest {
         assertEquals("check cleared array", "MyArray{ size = 0, items = [] }", array.toString());
         assertEquals("check cleared size", 0, array.size());
     }
+
+    @Test
+    public void checkAddAtIndex() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+
+        // check false cases
+        assertFalse("add on wrong index 1", array.add(-1, 5));
+        assertFalse("add on wrong index 2", array.add(4, 5));
+        assertFalse("add on wrong index 3", array.add(100, 5));
+
+        // check beginning of array
+        assertTrue("add in beginning 1", array.add(0, 0));
+        Integer[] expected = new Integer[]{ 0, 1, 2, 3 };
+        assertArrayEquals(expected, array.toArray());
+
+
+        // check adding to the middle
+        assertTrue("add in middle 1", array.add(2, -5));
+        expected = new Integer[]{ 0, 1, -5, 2, 3 };
+        assertArrayEquals(expected, array.toArray());
+
+        // check adding to the end
+        assertTrue("add in end 1", array.add(5, 666));
+        expected = new Integer[]{ 0, 1, -5, 2, 3, 666 };
+        assertArrayEquals(expected, array.toArray());
+
+        // add after clear
+        array.clear();
+        assertTrue("add all after clear", array.add(0, 777));
+        expected = new Integer[]{ 777 };
+        assertArrayEquals(expected, array.toArray());
+    }
 }
