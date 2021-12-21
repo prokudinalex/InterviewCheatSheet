@@ -248,7 +248,17 @@ public class MyArray<Type> implements IArray<Type> {
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for (int i = items.length - 1; i >= 0; i--) {
+            if (null == o && null == items[i]) {
+                return i;
+            }
+
+            if (null != items[i] && items[i].equals(o)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     /**

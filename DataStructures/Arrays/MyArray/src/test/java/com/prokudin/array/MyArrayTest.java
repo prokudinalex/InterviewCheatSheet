@@ -341,4 +341,20 @@ public class MyArrayTest {
         array = new MyArray<>(new Integer[]{ 1, 3, 2, null, 6, 7, 1, null, 3 });
         assertEquals("check only first occurrence of null", 3, array.indexOf(null));
     }
+
+    @Test
+    public void checkLastIndexOf() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+        assertEquals("check non-existent 5", -1, array.lastIndexOf(5));
+        assertEquals("check non-existent null", -1, array.lastIndexOf(null));
+        assertEquals("check 3", 2, array.lastIndexOf(3));
+        assertEquals("check 2", 1, array.lastIndexOf(2));
+        assertEquals("check 1", 0, array.lastIndexOf(1));
+
+        array = new MyArray<>(new Integer[]{ 1, 3, 2, 5, 6, 7, 1, 2, 3 });
+        assertEquals("check only last occurrence of 2", 7, array.lastIndexOf(2));
+
+        array = new MyArray<>(new Integer[]{ 1, 3, 2, null, 6, 7, 1, null, 3 });
+        assertEquals("check only last occurrence of null", 7, array.lastIndexOf(null));
+    }
 }
