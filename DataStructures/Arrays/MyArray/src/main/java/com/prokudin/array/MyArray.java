@@ -183,6 +183,7 @@ public class MyArray<Type> implements IArray<Type> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
+        // TODO: implement
         return false;
     }
 
@@ -192,9 +193,16 @@ public class MyArray<Type> implements IArray<Type> {
         size = 0;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Type set(int index, Type element) {
-        return null;
+        if (index < 0 || index >= items.length) {
+            return null;
+        }
+
+        Type old = (Type) items[index];
+        items[index] = element;
+        return old;
     }
 
     @Override

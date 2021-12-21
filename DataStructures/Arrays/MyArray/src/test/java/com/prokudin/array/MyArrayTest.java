@@ -8,6 +8,7 @@ import java.util.Collections;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class MyArrayTest {
@@ -297,5 +298,31 @@ public class MyArrayTest {
         assertTrue("add all after clear", array.add(0, 777));
         expected = new Integer[]{ 777 };
         assertArrayEquals(expected, array.toArray());
+    }
+
+    @Test
+    public void checkSet() {
+        MyArray<Integer> array = new MyArray<>(new Integer[]{ 1, 2, 3 });
+
+        // check false cases
+        assertNull("set on wrong index 1", array.set(-1, 5));
+        assertNull("set on wrong index 2", array.set(3, 5));
+        assertNull("set on wrong index 3", array.set(100, 5));
+
+        Integer[] expected = new Integer[]{ 5, 2, 3 };
+        assertEquals("set on 0", new Integer(1), array.set(0, 5));
+        assertArrayEquals(expected, array.toArray());
+
+        expected = new Integer[]{ 5, 5, 3 };
+        assertEquals("set on 1", new Integer(2), array.set(1, 5));
+        assertArrayEquals(expected, array.toArray());
+
+        expected = new Integer[]{ 5, 5, 5 };
+        assertEquals("set on 2", new Integer(3), array.set(2, 5));
+        assertArrayEquals(expected, array.toArray());
+
+        // set after clear
+        array.clear();
+        assertNull("set on wrong index 0", array.set(0, 5));
     }
 }
